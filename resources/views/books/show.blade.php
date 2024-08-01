@@ -1,5 +1,7 @@
 @extends('layouts.books-layout')
 
+@section('title', $title)
+
 @section('content')
 <section style="background-color:slateblue">
     <h2>{{$book->title}}</h2>
