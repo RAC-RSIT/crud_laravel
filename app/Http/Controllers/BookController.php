@@ -15,7 +15,9 @@ class BookController extends Controller
 {
     public function index(): View
     {   
-        $books = Book::all(); // Fetch all books from the database
+        // $books = Book::where('is_active', 1)->get(); // Fetch all active books from the database
+        $books = Book::where('deleted_at', true)->get();
+        // $books = Book::onlyTrashed()->get();
         return view('books.index', ['books' => $books, 'title' => 'books']);  // we could do the same using compact($books)
     }
     
@@ -49,7 +51,9 @@ class BookController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        DB::table('books')->where('id', $id)->delete();
+        // DB::table('books')->where('id', $id)->delete();
+        $book = Book::findOrFail($id);
+        $book->delete();
         return redirect()->route('books.index')->with('success', 'Book deleted successfully'); 
     }
 
