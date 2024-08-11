@@ -13,10 +13,12 @@ use Illuminate\Http\RedirectResponse;
 
 class BookController extends Controller
 {
-    public function index(): View
+    public function index()
     {   
-        $books = Book::all(); // Fetch all active books from the database
+        // $books = Book::all(); // Fetch all active books from the database
+        $books = Book::where('user_id', 1)->where('is_active', 1)->get();
         // $books = Book::onlyTrashed()->get();
+        return $books;
         return view('books.index', ['books' => $books, 'title' => 'books']);  // we could do the same using compact($books)
     }
     
