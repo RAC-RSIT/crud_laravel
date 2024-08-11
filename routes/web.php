@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
     Route::patch('/books/{id}', [BookController::class, 'update'])->name('books.update'); 
     Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+    // Route::get('/books/restore', [BookController::class, 'restore_index'])->name('books.restore_index');
+    // Route::put('/books/{id}/restore', [BookController::class, 'restore'])->name('books.restore');
 });
 
 

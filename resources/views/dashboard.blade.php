@@ -14,5 +14,7 @@
             </div>
         </div>
     </div>
-    <a href="{{route('books.index')}}">See books</a>
+    <a href="{{route('books.index')}}">Books</a>
+    <br>
+    {{-- <a href="{{route('books.restore_index')}}">Trashed books</a> --}}
 </x-app-layout>

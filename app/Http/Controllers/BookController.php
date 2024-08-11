@@ -15,8 +15,7 @@ class BookController extends Controller
 {
     public function index(): View
     {   
-        // $books = Book::where('is_active', 1)->get(); // Fetch all active books from the database
-        $books = Book::where('deleted_at', true)->get();
+        $books = Book::all(); // Fetch all active books from the database
         // $books = Book::onlyTrashed()->get();
         return view('books.index', ['books' => $books, 'title' => 'books']);  // we could do the same using compact($books)
     }
@@ -24,7 +23,7 @@ class BookController extends Controller
     public function show($id): View
     {   
         $book = DB::table('books')->where('id', $id)->first();
-        return view('books.show', ['book' => $book, 'title' => $book->title]);  // we could do the same using compact($book)
+        return view('books.show', ['book' => $book, 'title' => 'a book']);  // we could do the same using compact($book)
     }
 
     public function store(Request $request)
@@ -77,6 +76,21 @@ class BookController extends Controller
 
         return redirect()->route('books.index')->with('success', 'Book updated successfully');
     }
+
+    // public function restore_index()
+    // {
+    //     $books = Book::onlyTrashed()->get();
+
+    //     return view('books.restore_index', ['books' => $books, 'title' => 'books restore']);  // we could do the same using compact($books)
+    // }
+
+    // public function restore($id)
+    // {
+    //     $book = Book::withTrashed()->findOrFail($id);
+    //     $book->restore();
+
+    //     return redirect()->route('books.restore_index')->with('success', 'Book restored successfully');
+    // }
 
 } 
 
