@@ -97,6 +97,11 @@
                     </td>
                 </tr>
             @endforeach
+            
+            {{-- <div style="height:100px">
+                {{ $books->links() }}
+            </div> --}}
+            {{ $books->links('pagination::bootstrap-4') }}
         </tbody>
     </table>
 </section>
