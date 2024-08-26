@@ -15,7 +15,7 @@ class BookController extends Controller
 {
     public function index()
     {   
-        $books = Book::where('is_active', 1)->paginate(2);
+        $books = Book::where('is_active', 1)->paginate(20);
         return view('books.index', ['books' => $books, 'title' => 'books']);  // we could do the same using compact($books)
     }
     

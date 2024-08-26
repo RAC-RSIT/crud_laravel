@@ -74,6 +74,18 @@
             </tr>
         </thead>
         <tbody>
+            <div id="search-form" class="my-2">
+                <form action="{{ route('search') }}" method="GET">
+                    <input type="text" name="query" placeholder="Search..." class="form-control w-25">
+                    <select name="order">
+                        <option value="ascending">Ascending</option>
+                        <option value="descending">Descending</option>
+                    </select>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </form>
+            </div>
+
+
             @foreach ($books as $book)
                 <tr>
                     <td>{{ $book->id }}</td>
@@ -91,7 +103,7 @@
                     <td>
                         <form action="{{ route('books.destroy', $book->id) }}" method="POST">
                             @csrf
-                            @method('DELETE')
+                            @method('DELETE') 
                             <button type="submit" class="btn btn-danger">delete</button> 
                         </form>
                     </td>

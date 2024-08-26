@@ -14,7 +14,22 @@
             </div>
         </div>
     </div>
-    <a href="{{route('books.index')}}">Books</a>
+    
+    <h1>Logged in user ID: {{ Auth::id() }}</h1>
+
+    <br><br>
+
+    <button>
+        <a href="{{route('books.index')}}">Books</a>
+    </button> 
+    
     <br>
-    {{-- <a href="{{route('books.restore_index')}}">Trashed books</a> --}}
+
+    <button>
+        <a href="{{route('profile.show')}}">My Profile</a>
+    </button> 
+    
+    <br>
+    
 </x-app-layout>
+
